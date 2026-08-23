@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text, DateTime
-from datetime import datetime
+from datetime import datetime, timezone
 from .database import Base
 
 class Snippet(Base):
@@ -10,4 +10,5 @@ class Snippet(Base):
     language = Column(String, index=True)
     content = Column(Text, nullable=False)
     tags = Column(String) # Comma-separated string of tags
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
+
