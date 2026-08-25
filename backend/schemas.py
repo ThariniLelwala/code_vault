@@ -4,7 +4,7 @@ from datetime import datetime
 
 class SnippetBase(BaseModel):
     title: str
-    language: Optional[str] = "General"
+    language: Optional[str] = "Plain Text"
     content: str
     tags: Optional[str] = ""
 

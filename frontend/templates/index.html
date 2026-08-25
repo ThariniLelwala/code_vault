@@ -6,6 +6,8 @@
     <title>Code Vault - Snippet Manager</title>
     <meta name="description" content="A lightweight, dynamic application to manage and search your code snippets and study notes.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Highlight.js Theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
@@ -25,11 +27,6 @@
                     <h3>Language</h3>
                     <ul id="languageFilters" class="filter-list">
                         <li class="active" data-lang="">All Languages</li>
-                        <li data-lang="Python">Python</li>
-                        <li data-lang="JavaScript">JavaScript</li>
-                        <li data-lang="HTML/CSS">HTML/CSS</li>
-                        <li data-lang="SQL">SQL</li>
-                        <li data-lang="General">General</li>
                     </ul>
                 </div>
             </div>
@@ -67,15 +64,47 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="language">Language</label>
+                        <div class="label-with-badge">
+                            <label for="language">Language</label>
+                            <span id="detectedLangBadge" class="detected-badge" style="display: none;">Detected: <strong></strong></span>
+                        </div>
                         <select id="language" required>
-                            <option value="Python">Python</option>
-                            <option value="JavaScript">JavaScript</option>
-                            <option value="HTML/CSS">HTML/CSS</option>
-                            <option value="SQL">SQL</option>
-                            <option value="C++">C++</option>
-                            <option value="Java">Java</option>
-                            <option value="General">General</option>
+                            <option value="auto">⚡ Auto-Detect</option>
+                            <optgroup label="Popular Languages">
+                                <option value="python">Python</option>
+                                <option value="javascript">JavaScript</option>
+                                <option value="typescript">TypeScript</option>
+                                <option value="html">HTML / XML</option>
+                                <option value="css">CSS / SCSS</option>
+                                <option value="sql">SQL</option>
+                                <option value="cpp">C++</option>
+                                <option value="c">C</option>
+                                <option value="csharp">C#</option>
+                                <option value="java">Java</option>
+                                <option value="go">Go</option>
+                                <option value="rust">Rust</option>
+                            </optgroup>
+                            <optgroup label="Web & Formats">
+                                <option value="json">JSON</option>
+                                <option value="yaml">YAML</option>
+                                <option value="markdown">Markdown</option>
+                                <option value="graphql">GraphQL</option>
+                            </optgroup>
+                            <optgroup label="Backend & Scripting">
+                                <option value="php">PHP</option>
+                                <option value="ruby">Ruby</option>
+                                <option value="bash">Bash / Shell</option>
+                                <option value="powershell">PowerShell</option>
+                                <option value="kotlin">Kotlin</option>
+                                <option value="swift">Swift</option>
+                                <option value="dart">Dart</option>
+                                <option value="r">R</option>
+                                <option value="lua">Lua</option>
+                                <option value="dockerfile">Dockerfile</option>
+                            </optgroup>
+                            <optgroup label="Other">
+                                <option value="plaintext">Plain Text</option>
+                            </optgroup>
                         </select>
                     </div>
                     <div class="form-group">
@@ -95,6 +124,8 @@
         </div>
     </div>
 
+    <!-- Highlight.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="/static/js/app.js"></script>
 </body>
 </html>
